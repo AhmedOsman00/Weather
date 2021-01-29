@@ -24,6 +24,9 @@ struct WeatherHandler: WeatherHandlerProtocol {
         return "\(K.URLs.imageURL)\(iconName ?? "")\(K.Weather.imageSize)"
     }
     
+    /// Get the date formatted
+    /// - Parameter timeInterval: the Unix time stamp
+    /// - Returns: the date as string in the format "EEEE, dd MMM yyyy" ex. "Friday, 29 Jan 2021"
     func getFormattedDate(timeInterval: Double?) -> String {
         let fullDate = Date(timeIntervalSince1970: timeInterval ?? 0)
         let formatter = DateFormatter()
@@ -32,6 +35,9 @@ struct WeatherHandler: WeatherHandlerProtocol {
         return date
     }
     
+    /// Get the time formatted
+    /// - Parameter timeInterval: the Unix time stamp
+    /// - Returns: the time as string in the format "H" ex. "12"
     func getFormattedTime(timeInterval: Double?) -> String {
         let fullDate = Date(timeIntervalSince1970: timeInterval ?? 0)
         let formatter = DateFormatter()
