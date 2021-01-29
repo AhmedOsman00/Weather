@@ -23,20 +23,20 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="tik-9Z-VbO">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="318"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="340"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mwh-dn-sAB">
-                                            <rect key="frame" x="71" y="36.5" width="272" height="245.5"/>
+                                            <rect key="frame" x="71" y="55" width="272" height="275"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4g-OB-ihv">
-                                                    <rect key="frame" x="0.0" y="0.0" width="272" height="95.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="272" height="125"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="80"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="6Rk-cw-fza">
-                                                    <rect key="frame" x="0.0" y="95.5" width="272" height="150"/>
+                                                    <rect key="frame" x="0.0" y="125" width="272" height="150"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hpY-oA-DNw">
                                                             <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
@@ -51,10 +51,21 @@
                                                 </stackView>
                                             </subviews>
                                         </stackView>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter City ..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ojx-E1-nbT">
+                                            <rect key="frame" x="10" y="10" width="394" height="35"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="QnH-9K-K7q"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="mwh-dn-sAB" firstAttribute="centerY" secondItem="tik-9Z-VbO" secondAttribute="centerY" id="ioL-Kp-qRi"/>
+                                        <constraint firstItem="Ojx-E1-nbT" firstAttribute="top" secondItem="tik-9Z-VbO" secondAttribute="top" constant="10" id="HiW-C1-tKL"/>
+                                        <constraint firstAttribute="trailing" secondItem="Ojx-E1-nbT" secondAttribute="trailing" constant="10" id="khE-ZN-xJV"/>
+                                        <constraint firstItem="Ojx-E1-nbT" firstAttribute="leading" secondItem="tik-9Z-VbO" secondAttribute="leading" constant="10" id="ruQ-YU-tsC"/>
+                                        <constraint firstItem="mwh-dn-sAB" firstAttribute="top" secondItem="Ojx-E1-nbT" secondAttribute="bottom" constant="10" id="uHb-Fv-VV6"/>
                                         <constraint firstItem="mwh-dn-sAB" firstAttribute="centerX" secondItem="tik-9Z-VbO" secondAttribute="centerX" id="vtZ-Jf-RE4"/>
                                     </constraints>
                                 </view>
@@ -87,6 +98,7 @@
                         <outlet property="currentDescLabel" destination="qT7-QY-ODi" id="cRY-OM-Jlf"/>
                         <outlet property="currentStatusIcon" destination="hpY-oA-DNw" id="PBw-e0-QUo"/>
                         <outlet property="currentTempLabel" destination="h4g-OB-ihv" id="abX-a8-nny"/>
+                        <outlet property="enterCityTextView" destination="Ojx-E1-nbT" id="MIg-eD-2Hu"/>
                         <outlet property="onlineSwitch" destination="37M-EV-v1F" id="s57-ei-nCo"/>
                         <outlet property="tableView" destination="LAa-q8-SAq" id="phd-tb-zRW"/>
                     </connections>
@@ -116,6 +128,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="background" width="1477.5" height="2626.5"/>
+        <image name="background" width="768" height="1024"/>
     </resources>
 </document>

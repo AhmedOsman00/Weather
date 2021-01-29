@@ -11,9 +11,9 @@ class WeatherAPI: WeatherAPIProtocol {
     private let localStore = FileStore()
     private let httpClient = HTTPClient()
     
-    func getWeather(isOnline: Bool = true, completion: @escaping (Data?, Error?)->Void) {
+    func getWeather(city: String, isOnline: Bool = true, completion: @escaping (Data?, Error?)->Void) {
         if isOnline {
-            httpClient.fetch(endpoint: WeatherEndPoint.forecast(city: K.Weather.city), completion: completion)
+            httpClient.fetch(endpoint: WeatherEndPoint.forecast(city: city), completion: completion)
         }else{
             localStore.fetchBundleFile(withName: K.Weather.weatherLocalFileName, completion: completion)
         }

@@ -9,7 +9,7 @@ import Foundation
 @testable import Weather
 
 class MockWeatherAPI: WeatherAPIProtocol {
-    func getWeather(isOnline: Bool, completion: @escaping (Data?, Error?) -> Void) {
+    func getWeather(city: String, isOnline: Bool, completion: @escaping (Data?, Error?) -> Void) {
         
     }
 }

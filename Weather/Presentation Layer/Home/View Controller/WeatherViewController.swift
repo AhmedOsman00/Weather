@@ -9,6 +9,7 @@ import UIKit
 
 class WeatherViewController: UIViewController {
     
+    @IBOutlet weak var enterCityTextView: UITextField!
     @IBOutlet weak private var onlineSwitch: UISwitch!
     @IBOutlet weak private var currentDescLabel: UILabel!
     @IBOutlet weak private var currentTempLabel: UILabel!
@@ -18,9 +19,12 @@ class WeatherViewController: UIViewController {
     private var storedOffsets = [Int: CGFloat]()
     private var daysWeatherUIModel: [DayWeatherUIModel]?
     weak private var loaderView :UIActivityIndicatorView?
+    private var city: String = K.Weather.München
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = city
+        enterCityTextView.delegate = self
         setupNavigationBar()
         addLoader()
         tableView.register(UINib(nibName: K.Nib.dayWeatherNib, bundle: nil), forCellReuseIdentifier: K.CellIdentifiers.dayCellIdentifier)
@@ -28,7 +32,7 @@ class WeatherViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         presenter = WeatherPresenter(weatherViewControllerDelegate: self)
-        presenter?.getForecast()
+        presenter?.getForecast(city: city)
     }
     
     private func setupNavigationBar() {
@@ -54,11 +58,12 @@ class WeatherViewController: UIViewController {
     
     @objc private func toggleNetwork() {
         let isOnline = onlineSwitch.isOn
-        presenter?.getForecast(isOnline: isOnline)
+        presenter?.getForecast(city: city, isOnline: isOnline)
     }
 }
 
 extension WeatherViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return daysWeatherUIModel?.count ?? 0
     }
@@ -82,6 +87,7 @@ extension WeatherViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension WeatherViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return daysWeatherUIModel?[collectionView.tag].timesWeather?.count ?? 0
     }
@@ -96,7 +102,22 @@ extension WeatherViewController: UICollectionViewDataSource, UICollectionViewDel
     }
 }
 
+extension WeatherViewController: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        city = textField.text ?? ""
+        navigationItem.title = city
+        presenter?.getForecast(city: city, isOnline: onlineSwitch.isOn)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+}
+
 extension WeatherViewController: WeatherViewControllerDelegate {
+    
     func updateUI(weatherUIModel: WeatherUIModel?) {
         currentStatusIcon.setImage(url: weatherUIModel?.nowIcon ?? "")
         currentDescLabel.text = weatherUIModel?.nowStatus

@@ -33,7 +33,7 @@ struct K {
     struct Weather {
         static let dateFormat = "EEEE, dd MMM yyyy"
         static let timeFormat = "H"
-        static let city = "München"
+        static let München = "München"
         static let imageSize = "@2x.png"
         static let weatherLocalFileName = "Weather"
     }

@@ -35,40 +35,4 @@ class WeatherPresenterTests: XCTestCase {
         // Then
         XCTAssertEqual(resultModel, expectedModel)
     }
-
-    func testCalculateTemperature() {
-        // Given
-        let temp = 279.6
-        // When
-        let resultTemp = sut?.calculateTemperature(temp: temp)
-        // Then
-        XCTAssertEqual(resultTemp, "6°")
-    }
-    
-    func testIconURL() {
-        // Given
-        let icon = "10d"
-        // When
-        let resultURL = sut?.iconURL(iconName: icon)
-        // Then
-        XCTAssertEqual(resultURL, "https://openweathermap.org/img/wn/10d@2x.png")
-    }
-    
-    func testCalculateDate() {
-        // Given
-        let date: Double = 1611910800
-        // When
-        let resultDate = sut?.calculateDate(timeInterval: date)
-        // Then
-        XCTAssertEqual(resultDate, "Friday, 29 Jan 2021")
-    }
-    
-    func testCalculateTime() {
-        // Given
-        let date: Double = 1611910800
-        // When
-        let resultTime = sut?.calculateTime(timeInterval: date)
-        // Then
-        XCTAssertEqual(resultTime, "11")
-    }
 }
